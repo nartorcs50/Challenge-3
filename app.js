@@ -56,13 +56,30 @@
 //   ])
 // );
 
-console.log('person1:shows ticket');
-console.log('person2:shows ticket');
+//  async function postsByUser(userId) { /* "Async" goes before the function, the "await" is coded next to
+//     the 'Promise' you want to wait for */
+//     const promise = await fetch('https://jsonplaceholder.typicode.com/posts')
+//     const result = await promise.json();
+    
+//     const posts = result.filter(element => element.userId === userId)
 
-const promisWifeBringingTicket = new Promise((resoleve, reject) => {
-    setTimer(() => {
-        resoleve('ticket');
-    }, 3000)
-})
+//     console.log(posts)
+    /* Alternative code below */
+//     fetch('https://jsonplaceholder.typicode.com/posts')
+//     .then(res => {
+//         console.log(res)
+//         console.log(userId)
+//     })
+// }
+// postsByUser(4)
 
-console.log(promisWifeBringingTicket)
+async function firstSixIncomplete(userId) {
+    const promise = await fetch('https://jsonplaceholder.typicode.com/todos');
+    const result = await promise.json();
+    
+    const incompletedTasks = result.filter(elem => !elem.completed).slice(0, 6)
+
+    console.log(incompletedTasks)
+}
+
+firstSixIncomplete()
